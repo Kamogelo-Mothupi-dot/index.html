@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For MaNsibande ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0; padding:0; overflow:hidden; font-family: Arial, sans-serif; text-align:center; background-color:#fff0f5;">
+
+<!-- Music -->
+<audio controls>
+    <source src="C:\Users\kamog\New folder\John.mp3" type="audio/mpeg">
+</audio>
+<audio controls>
+    <source src="C:\Users\kamog\New folder\On Bended Knee - Boyz II Men (Lyrics) 🎵.mp3" type="audio/mpeg">
+</audio>
+<audio controls>
+    <source src="C:\Users\kamog\New folder\Christina Perri - A Thousand Years.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Floating Red Hearts -->
+<script>
+function createHeart() {
+    var heart = document.createElement("div");
+    heart.innerHTML = "<span style='color:red;'>❤️</span>";
+    heart.style.position = "fixed";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.top = window.innerHeight + "px";
+    heart.style.fontSize = (20 + Math.random() * 15) + "px";
+    heart.style.zIndex = "9999";
+
+    document.body.appendChild(heart);
+
+    var speed = 1 + Math.random() * 2;
+    function moveHeart() {
+        var top = parseFloat(heart.style.top);
+        if (top < -20) {
+            heart.remove();
+        } else {
+            heart.style.top = (top - speed) + "px";
+            requestAnimationFrame(moveHeart);
+        }
+    }
+    moveHeart();
+}
+setInterval(createHeart, 400);
+</script>
+
+<!-- Typing Message -->
+<h2 id="text" style="padding: 20px; font-size: 1.2em; line-height:1.5;"></h2>
+
+<script>
+var message = "Good Morning Sthandwa Sami \n\n angazi ngiqalephi sthandwa sami, I know sengingenwe umkhuba omusha sha, but I’m really really sorry I fell asleep without saying good night and I love you...\n\n I have no excuses for that, usho lukhulu kmina MaNsibande and kungiphatha kabi ukuthi kuleynsuku eyndlule ngikuphatha kabi, making you mad and stuff. I don't know what goes on your mind mangivele ngilale ngingashongo lutho, kodwa sthandwa sami I want you know ukuthi ngiyakuthanda and akusoze kushintshe lokho, I just have to work on my falling asleep game, ngingabi weak.\n\n I was panicking and  couldn't sleep so I thought why not do this, ngiziphaphele nje.\n\nI love you so so so much sthandwa sami, more than anything ❤️\n\n";
+var i = 0;
+
+function typeWriter() {
+    if (i < message.length) {
+        document.getElementById("text").innerHTML += message.charAt(i) === "\n" ? "<br>" : message.charAt(i);
+        i++;
+        setTimeout(typeWriter, 55);
+    } else {
+        showBigHeart();
+    }
+}
+typeWriter();
+
+// Show big heart after typing
+function showBigHeart() {
+    var heart = document.createElement("div");
+    heart.style.position = "fixed";
+    heart.style.top = "50%";
+    heart.style.left = "50%";
+    heart.style.transform = "translate(-50%, -50%)";
+    heart.style.fontSize = "8em";
+    heart.style.color = "red";
+    heart.innerHTML = "❤️";
+    document.body.appendChild(heart);
+
+    // Make it slowly float up and fade
+    var opacity = 1;
+    function floatUp() {
+        var top = parseFloat(heart.style.top);
+        top -= 0.5;
+        heart.style.top = top + "%";
+        opacity -= 0.002;
+        heart.style.opacity = opacity;
+        if (opacity > 0) requestAnimationFrame(floatUp);
+        else heart.remove();
+    }
+    floatUp();
+}
+</script>
+
+</body>
+</html>
