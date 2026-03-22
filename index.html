@@ -7,16 +7,33 @@
 <body style="margin:0; padding:0; overflow:hidden; font-family: Arial, sans-serif; text-align:center; background-color:#fff0f5;">
 
 <!-- Music -->
-<audio controls>
-    <source src="C:\Users\kamog\New folder\John.mp3" type="audio/mpeg">
+<h3>Choose your song ❤️</h3>
+
+<audio id="song1" controls>
+    <source src="song1.mp3" type="audio/mpeg">
 </audio>
-<audio controls>
-    <source src="C:\Users\kamog\New folder\On Bended Knee - Boyz II Men (Lyrics) 🎵.mp3" type="audio/mpeg">
+<br>
+<audio id="song2" controls>
+    <source src="song2.mp3" type="audio/mpeg">
 </audio>
-<audio controls>
-    <source src="C:\Users\kamog\New folder\Christina Perri - A Thousand Years.mp3" type="audio/mpeg">
+<br>
+<audio id="song3" controls>
+    <source src="song3.mp3" type="audio/mpeg">
 </audio>
 
+<script>
+var audios = [document.getElementById('song1'), 
+              document.getElementById('song2'), 
+              document.getElementById('song3')];
+
+audios.forEach(function(audio){
+    audio.addEventListener('play', function(){
+        audios.forEach(function(a){
+            if(a !== audio) a.pause();
+        });
+    });
+});
+</script>
 <!-- Floating Red Hearts -->
 <script>
 function createHeart() {
