@@ -63,21 +63,31 @@ setInterval(createHeart, 400);
 </script>
 
 <!-- Typing Message -->
-<h2 id="text" style="padding: 20px; font-size: 1.2em; line-height:1.5;"></h2>
+<h2>Good Morning MaNsibande ❤️</h2>
+
+<div id="text" style="padding: 20px; font-size:1.2em; line-height:1.5; max-height: 50vh; overflow-y: auto; border: 2px solid red; border-radius: 10px;"></div>
 
 <script>
 var message = "Good Morning Sthandwa Sami \n\n angazi ngiqalephi sthandwa sami, I know sengingenwe umkhuba omusha sha, but I’m really really sorry I fell asleep without saying good night and I love you...\n\n I have no excuses for that, usho lukhulu kmina MaNsibande and kungiphatha kabi ukuthi kuleynsuku eyndlule ngikuphatha kabi, making you mad and stuff. I don't know what goes on your mind mangivele ngilale ngingashongo lutho, kodwa sthandwa sami I want you know ukuthi ngiyakuthanda and akusoze kushintshe lokho, I just have to work on my falling asleep game, ngingabi weak.\n\n I was panicking and  couldn't sleep so I thought why not do this, ngiziphaphele nje.\n\nI love you so so so much sthandwa sami, more than anything ❤️\n\n";
 var i = 0;
+var chunk = 2;       // number of characters per step
+var speed = 100;      // 80ms per step = smooth but readable
+var textDiv = document.getElementById("text");
 
 function typeWriter() {
-    if (i < message.length) {
-        document.getElementById("text").innerHTML += message.charAt(i) === "\n" ? "<br>" : message.charAt(i);
-        i++;
-        setTimeout(typeWriter, 55);
+    if(i < message.length){
+        var nextChunk = message.substr(i, chunk);
+        // Replace line breaks with <br>
+        nextChunk = nextChunk.replace(/\n/g, "<br>");
+        textDiv.innerHTML += nextChunk;
+        i += chunk;
+        textDiv.scrollTop = textDiv.scrollHeight; // auto scroll
+        setTimeout(typeWriter, speed);
     } else {
-        showBigHeart();
+        showBigHeart(); // call your big heart function after typing
     }
 }
+
 typeWriter();
 
 // Show big heart after typing
